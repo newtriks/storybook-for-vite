@@ -4,7 +4,8 @@
   "private": true,
   "main": "src/Button.jsx",
   "scripts": {
-    "dev": "vite --config ../../vite.config.js"
+    "dev": "vite --config ../../vite.config.js",
+    "storybook": "rm -rf node_modules/.cache && sb dev -p 5001 -c ../../.storybook"
   },
   "dependencies": {
     "react": "^17.0.2",

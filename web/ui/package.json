@@ -4,7 +4,8 @@
   "private": true,
   "main": "src/App.jsx",
   "scripts": {
-    "dev": "vite --config ../../vite.config.js"
+    "dev": "vite --config ../../vite.config.js",
+    "storybook": "rm -rf node_modules/.cache && sb dev -p 5001 -c ../../.storybook"
   },
   "dependencies": {
     "@newtriks/header": "workspace:*",

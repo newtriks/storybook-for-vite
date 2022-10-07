@@ -1,11 +1,24 @@
 const { mergeConfig } = require('vite');
+const process = require('process');
+const packageJSON = require('../package.json');
+
+function isRoot(cwd) {
+  return  cwd.substring(cwd.lastIndexOf('/') + 1) === packageJSON.name;
+}
+
+async function stories() {
+  const cwd = process.cwd();
+  // Crude...but enables running package stories independently.
+  // Possible alternative better approach?
+  if (isRoot(cwd)) {
+    return ['../stories/**/*.stories.mdx'];
+  } else {
+    return [`${cwd}/src/**/*.stories.@(js|jsx)`];
+  }
+}
 
 module.exports = {
-  stories: [
-    '../stories/**/*.stories.mdx',
-    '../packages/**/*.stories.@(js|jsx)',
-    '../web/**/*.stories.@(js|jsx)',
-  ],
+  stories,
   addons: ['@storybook/addon-essentials'],
   core: {},
   framework: {

@@ -4,7 +4,12 @@
 
 1. `pnpm i`
 2. `pnmp storybook`
-3. 
+
+## Run storybook
+
+1. Root stories: `pnpm storybook`
+2. Package stories: `pnpm --filter @newtriks/button storybook`
+
 ## Gotcha fixes
 
 * If odd errors are thrown, run `rm -rf node_modules/.cache` to delete Storybook cache that seems to cause issues at times.
