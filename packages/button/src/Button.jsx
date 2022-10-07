@@ -5,16 +5,19 @@ import './button.css';
 /**
  * Primary UI component for user interaction
  */
-export const Button = ({ primary, backgroundColor, size, label, ...props }) => {
+export const Button = ({ primary, backgroundColor, size, label, onClick, ...props }) => {
+  const [count, setCount] = React.useState(0);
   const mode = primary ? 'storybook-button--primary' : 'storybook-button--secondary';
+  const handleClick = () => setCount(count + 1);
   return (
     <button
       type="button"
       className={['storybook-button', `storybook-button--${size}`, mode].join(' ')}
       style={backgroundColor && { backgroundColor }}
+      onClick={handleClick}
       {...props}
     >
-      {label}
+      {label} {count}
     </button>
   );
 };

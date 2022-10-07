@@ -19,13 +19,14 @@ async function stories() {
 
 module.exports = {
   stories,
-  addons: ['@storybook/addon-essentials'],
+  addons: ['@storybook/addon-essentials', '@storybook/addon-interactions'],
   core: {},
   framework: {
     name: '@storybook/react-vite',
     options: {},
   },
   features: {
+    interactionsDebugger: true,
     storyStoreV7: false,
   },
 

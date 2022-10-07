@@ -1,4 +1,6 @@
 import React from 'react';
+import { within, userEvent, getByRole } from '@storybook/testing-library';
+import { expect } from '@storybook/jest';
 
 import { Button } from './Button';
 
@@ -37,4 +39,13 @@ export const Small = Template.bind({});
 Small.args = {
   size: 'small',
   label: 'Button',
+};
+
+// Tests
+export const ButtonClick = Primary.bind({});
+ButtonClick.args = { ...Primary.args };
+ButtonClick.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  await userEvent.click(canvas.getByRole('button'));
+  await expect(canvas.getByText('Button 1')).toBeInTheDocument();
 };

@@ -1,5 +1,13 @@
 # Test project to get Storybook, Vite, PNPM & React working
 
+Example project that uses a monorepo architecture with PNPM, Vite, React and Storybook. The overall goals are related to testing these specific tools and libraries compatibility with Storybook. 
+
+Aims include:
+
+1. Ability to run stories from root level of the monorepo.
+2. Ability to run stories on a package per package basis so that development of package content e.g. React Components can be done simply using Storybook as opposed to running a separate Vite dev server. This approach encourages documentation to be completed (for obvious reasons as your developing within Storybook) and component testing without the need for other libraries such as Cypress.
+3. Ability to run component tests on a package per package basis.
+
 ## Installation
 
 1. `pnpm i`
@@ -29,8 +37,4 @@
 * Oddly, this warning displays in the terminal `WARN unable to find package.json for @vitejs/plugin-react`.
 * **Introduction** page loads > click **Button** nav link to navigate url > click **Introduction** nav link. This results in an error: `Error: Docs-only story` due to the url now using `—page` instead of `—docs`.
 * Another _oddly_ is that since moving this to a monorepo structure, I have to manually refresh the browser after it loads to get the stories to render (sometimes)?
-
-## TODO
-
-1. Work out how to run packages independently in Storybook e.g. run the `Button` package using Storybooks dev server and develop using that workflow as opposed to needing a separate instance of a Vite dev server.
-2. Implement component testing in the same fashion as above.
+* URL uses cached path query parameter (/?path=/docs/example-header--docs) on starting storybook. If you navigate to a story, then delete it, then restart storybook it navigates to that specific path and obviously then cannot find a matching story. This sounds trivial I know, however, configuration in this repo includes starting storybook in different packages and ideally, needs them to simply load the root url e.g. http://localhost:5001 on start each time.
