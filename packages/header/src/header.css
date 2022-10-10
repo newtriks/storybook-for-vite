@@ -12,13 +12,15 @@ svg {
   vertical-align: top;
 }
 
-h1 {
+h4 {
   font-weight: 900;
-  font-size: 20px;
+  font-size: 14px;
   line-height: 1;
   margin: 6px 0 6px 10px;
   display: inline-block;
   vertical-align: top;
+  line-height: 1rem;
+  max-width: 600px;
 }
 
 button + button {
@@ -29,4 +31,9 @@ button + button {
   color: #333;
   font-size: 14px;
   margin-right: 10px;
+}
+
+.left {
+  display: flex;
+  align-items: center;
 }

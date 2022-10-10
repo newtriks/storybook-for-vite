@@ -21,6 +21,7 @@ function readPackage(pkg, context) {
     '@types/react': '^18.0.17',
     '@types/react-dom': '^18.0.6',
     'babel-loader': '^8.2.5',
+    'http-proxy-middleware': '^2.0.6',
     storybook: '^7.0.0-alpha.35',
     typescript: '^4.8.4',
     webpack: '^5.74.0',

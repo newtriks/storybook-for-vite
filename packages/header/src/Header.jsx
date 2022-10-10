@@ -4,10 +4,24 @@ import PropTypes from 'prop-types';
 import { Button } from '@newtriks/button';
 import './header.css';
 
+const CatFact = () => {
+  const [fact, setFact] = React.useState(null);
+  const fetchFact = React.useCallback(async () => {
+    const response = await fetch('/fact');
+    const data = await response.json();
+    setFact(data.fact);
+  }, []);
+
+  React.useEffect(() => {
+    if (!fact) fetchFact();
+  })
+  return <h4>{fact || 'Loading...'}</h4>
+}
+
 export const Header = ({ user, onLogin, onLogout, onCreateAccount }) => (
   <header>
     <div className="wrapper">
-      <div>
+      <div className="left">
         <svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
           <g fill="none" fillRule="evenodd">
             <path
@@ -24,7 +38,7 @@ export const Header = ({ user, onLogin, onLogout, onCreateAccount }) => (
             />
           </g>
         </svg>
-        <h1>Acme</h1>
+        <CatFact />
       </div>
       <div>
         {user ? (

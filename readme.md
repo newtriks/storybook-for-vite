@@ -7,6 +7,7 @@ Aims include:
 1. Ability to run stories from root level of the monorepo.
 2. Ability to run stories on a package per package basis so that development of package content e.g. React Components can be done simply using Storybook as opposed to running a separate Vite dev server. This approach encourages documentation to be completed (for obvious reasons as your developing within Storybook) and component testing without the need for other libraries such as Cypress.
 3. Ability to run component tests on a package per package basis.
+4. Ability to proxy server requests.
 
 ## Installation
 
