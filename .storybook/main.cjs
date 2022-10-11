@@ -3,7 +3,7 @@ const process = require('process');
 const packageJSON = require('../package.json');
 
 function isRoot(cwd) {
-  return  cwd.substring(cwd.lastIndexOf('/') + 1) === packageJSON.name;
+  return cwd.substring(cwd.lastIndexOf('/') + 1) === packageJSON.name;
 }
 
 async function stories() {
@@ -11,7 +11,11 @@ async function stories() {
   // Crude...but enables running package stories independently.
   // Possible alternative better approach?
   if (isRoot(cwd)) {
-    return ['../stories/**/*.stories.mdx'];
+    return [
+      '../stories/**/*.stories.mdx',
+      `../packages/**/*.stories.@(js|jsx)`,
+      `../web/**/*.stories.@(js|jsx)`,
+    ];
   } else {
     return [`${cwd}/src/**/*.stories.@(js|jsx)`];
   }
