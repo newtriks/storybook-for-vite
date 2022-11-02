@@ -1,6 +1,7 @@
 const { mergeConfig } = require('vite');
 const process = require('process');
 const packageJSON = require('../package.json');
+const path = require('path');
 
 function isRoot(cwd) {
   return cwd.substring(cwd.lastIndexOf('/') + 1) === packageJSON.name;
@@ -11,13 +12,24 @@ async function stories() {
   // Crude...but enables running package stories independently.
   // Possible alternative better approach?
   if (isRoot(cwd)) {
-    return [
-      '../stories/**/*.stories.mdx',
-      `../packages/**/*.stories.@(js|jsx)`,
-      `../web/**/*.stories.@(js|jsx)`,
-    ];
+    const { globby } = await import('globby'); // globby is ESM only
+    // https://github.com/storybookjs/storybook/issues/19446#issuecomment-1276067149
+    return await globby(
+      [
+        // Include root level documentation (mdx)
+        '../stories/**/*.stories.mdx',
+        // Include component stories (jsx)
+        `../(packages|web)/**/*.stories.jsx`,
+        // Exclude component stories within node_modules
+        `!../(packages|web)/*/node_modules`,
+      ],
+      {
+        cwd: path.join(cwd, '.storybook'),
+      }
+    );
   } else {
-    return [`${cwd}/src/**/*.stories.@(js|jsx)`];
+    // Only specific package/web stories (jsx)
+    return [`${cwd}/src/**/*.stories.jsx`];
   }
 }
 
@@ -31,7 +43,7 @@ module.exports = {
   },
   features: {
     interactionsDebugger: true,
-    storyStoreV7: false,
+    storyStoreV7: true,
   },
 
   async viteFinal(config) {

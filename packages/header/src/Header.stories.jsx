@@ -9,16 +9,15 @@ export default {
     // More on Story layout: https://storybook.js.org/docs/react/configure/story-layout
     layout: 'fullscreen',
   },
-};
-
-const Template = (args) => <Header {...args} />;
-
-export const LoggedIn = Template.bind({});
-LoggedIn.args = {
-  user: {
-    name: 'Jane Doe',
+  args: {
+    user: {
+      name: 'Jane Doe',
+    },
   },
 };
 
-export const LoggedOut = Template.bind({});
-LoggedOut.args = {};
+export const LoggedIn = {};
+
+export const LoggedOut = {
+  args: {},
+};

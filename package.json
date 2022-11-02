@@ -8,7 +8,7 @@
     "dev": "vite --config ../../vite.config.js",
     "preinstall": "npx only-allow pnpm",
     "preview": "vite preview",
-    "storybook": "sb dev -p 5001"
+    "storybook": "rm -rf node_modules/.cache && sb dev -p 5001"
   },
   "dependencies": {
     "react": "^17.0.2",

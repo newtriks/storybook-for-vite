@@ -4,48 +4,45 @@ import { expect } from '@storybook/jest';
 
 import { Button } from './Button';
 
-// More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
+// More on default export: https://storybook.js.org/docs/7.0/react/writing-stories/introduction#default-export
 export default {
   title: 'Example/Button',
   component: Button,
-  // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
-  argTypes: {
-    backgroundColor: { control: 'color' },
+  // More on args: https://storybook.js.org/docs/7.0/react/writing-stories/args
+  args: {
+    primary: true,
+    label: 'Button',
+  },
+  tags: ['docsPage'],
+};
+
+export const Primary = {};
+
+export const Secondary = {
+  args: {
+    label: 'Secondary Button',
+    primary: false,
   },
 };
 
-// More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
-const Template = (args) => <Button {...args} />;
-
-export const Primary = Template.bind({});
-// More on args: https://storybook.js.org/docs/react/writing-stories/args
-Primary.args = {
-  primary: true,
-  label: 'Button',
+export const Large = {
+  args: {
+    size: 'large',
+  },
 };
 
-export const Secondary = Template.bind({});
-Secondary.args = {
-  label: 'Button',
-};
-
-export const Large = Template.bind({});
-Large.args = {
-  size: 'large',
-  label: 'Button',
-};
-
-export const Small = Template.bind({});
-Small.args = {
-  size: 'small',
-  label: 'Button',
+export const Small = {
+  // More on args: https://storybook.js.org/docs/7.0/react/writing-stories/args
+  args: {
+    size: 'small',
+  },
 };
 
 // Tests
-export const ButtonClick = Primary.bind({});
-ButtonClick.args = { ...Primary.args };
-ButtonClick.play = async ({ canvasElement }) => {
-  const canvas = within(canvasElement);
-  await userEvent.click(canvas.getByRole('button'));
-  await expect(canvas.getByText('Button 1')).toBeInTheDocument();
+export const ButtonClick = {
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    await userEvent.click(canvas.getByRole('button'));
+    await expect(canvas.getByText('Button 1')).toBeInTheDocument();
+  },
 };
