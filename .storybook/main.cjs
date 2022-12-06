@@ -1,5 +1,4 @@
 const { mergeConfig } = require('vite');
-const process = require('process');
 const packageJSON = require('../package.json');
 const path = require('path');
 function isRoot(cwd) {
@@ -34,7 +33,11 @@ async function stories() {
 
 module.exports = {
   stories,
-  addons: ['@storybook/addon-essentials', '@storybook/addon-links'],
+  addons: [
+    '@storybook/addon-essentials',
+    '@storybook/addon-links',
+    '@storybook/addon-interactions',
+  ],
   framework: {
     name: '@storybook/react-vite',
     options: {},

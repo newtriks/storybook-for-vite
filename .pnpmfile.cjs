@@ -5,6 +5,7 @@ function readPackage(pkg, context) {
     '@storybook/addon-links': '^7.0.0-alpha.58',
     '@storybook/addons': '^7.0.0-alpha.58',
     '@storybook/addon-docs': '^7.0.0-alpha.58',
+    '@storybook/addon-interactions': '^7.0.0-alpha.58',
     '@storybook/cli': '^7.0.0-alpha.58',
     '@storybook/jest': '^0.0.10',
     '@storybook/react': '^7.0.0-alpha.58',
