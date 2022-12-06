@@ -2,7 +2,6 @@ const { mergeConfig } = require('vite');
 const process = require('process');
 const packageJSON = require('../package.json');
 const path = require('path');
-
 function isRoot(cwd) {
   return cwd.substring(cwd.lastIndexOf('/') + 1) === packageJSON.name;
 }
@@ -35,19 +34,15 @@ async function stories() {
 
 module.exports = {
   stories,
-  addons: ['@storybook/addon-essentials', '@storybook/addon-interactions'],
-  core: {},
+  addons: ['@storybook/addon-essentials', '@storybook/addon-links'],
   framework: {
     name: '@storybook/react-vite',
     options: {},
   },
-  features: {
-    interactionsDebugger: true,
-    storyStoreV7: true,
-  },
-
   async viteFinal(config) {
-    // return the customized config
-    return mergeConfig(config, {});
+    return {
+      ...config,
+      resolve: {},
+    };
   },
 };
