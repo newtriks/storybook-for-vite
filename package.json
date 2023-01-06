@@ -5,7 +5,7 @@
   "scripts": {
     "build": "vite build",
     "build-storybook": "sb build",
-    "dev": "vite --config ../../vite.config.js",
+    "dev": "vite --config vite.config.js",
     "preinstall": "npx only-allow pnpm",
     "preview": "vite preview",
     "storybook": "rm -rf node_modules/.cache && sb dev -p 5001"
@@ -16,6 +16,7 @@
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^2.0.0",
+    "http-proxy-middleware": "^2.0.6",
     "prop-types": "^15.8.1",
     "vite": "^3.1.0"
   }
