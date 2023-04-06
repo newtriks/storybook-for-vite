@@ -6,16 +6,26 @@
     "build": "vite build",
     "dev": "vite --config vite.config.js",
     "preinstall": "npx only-allow pnpm",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "dependencies": {
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
   },
   "devDependencies": {
+    "@storybook/addon-essentials": "^7.0.2",
+    "@storybook/addon-interactions": "^7.0.2",
+    "@storybook/addon-links": "^7.0.2",
+    "@storybook/blocks": "^7.0.2",
+    "@storybook/react": "^7.0.2",
+    "@storybook/react-vite": "^7.0.2",
+    "@storybook/testing-library": "^0.0.14-next.2",
     "@vitejs/plugin-react": "^2.0.0",
     "http-proxy-middleware": "^2.0.6",
     "prop-types": "^15.8.1",
+    "storybook": "^7.0.2",
     "vite": "^3.1.0"
   }
 }
